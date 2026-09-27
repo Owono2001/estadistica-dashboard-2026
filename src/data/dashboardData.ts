@@ -1,47 +1,109 @@
 // src/data/dashboardData.ts
+// Datos verificados manualmente contra las fuentes primarias del INEGE.
+// Fuentes: Anuario Estadístico de G.E. 2026 · Perspectivas Macroeconómicas 2025-2027 (jun. 2025)
+// Los campos de texto usan claves neutras (p. ej. "esba", "bachillerato") en vez de
+// texto fijo en español, para que cada componente los traduzca con t() según el idioma activo.
 
-export const macroData = [
-  { year: '2023', gdp: -7.4, inflation: 3.5, cemacTarget: 3.0 },
-  { year: '2024', gdp: 0.4, inflation: 4.1, cemacTarget: 3.0 },
-  { year: '2025', gdp: -1.6, inflation: 2.8, cemacTarget: 3.0 },
-  { year: '2026', gdp: 0.2, inflation: 2.6, cemacTarget: 3.0 },
-  { year: '2027', gdp: 1.2, inflation: 2.6, cemacTarget: 3.0 },
+export interface StatCardRaw {
+  value: string;
+  labelKey: string;
+  sourceLabel: string;
+}
+
+export const heroStats: StatCardRaw[] = [
+  { value: '1,73M', labelKey: 'hero.stat.population', sourceLabel: 'Anuario 2026' },
+  { value: '13,7%', labelKey: 'hero.stat.unemployment', sourceLabel: 'Tabla 123' },
+  { value: '83,0%', labelKey: 'hero.stat.informality', sourceLabel: 'Tabla 123' },
+  { value: '50,7%', labelKey: 'hero.stat.poverty', sourceLabel: 'Tabla 160' },
 ];
 
-export const energyData = [
-  { name: 'Renovable', value: 555160, color: '#10b981' },
-  { name: 'Térmica (No Renovable)', value: 679174, color: '#f59e0b' },
+// ---------- EMPLEO ----------
+export const desocupacionPorEstudios = [
+  { nivelKey: 'esba', tasa: 32.9 },
+  { nivelKey: 'bachillerato', tasa: 19.7 },
+  { nivelKey: 'tecnica', tasa: 18.2 },
+  { nivelKey: 'universitario', tasa: 4.4 },
+];
+// Fuente: Anuario 2026, Tabla 129
+
+export const mediosBusquedaEmpleo = [
+  { medio: 'Contactos personales', pct: 45.0 },
+  { medio: 'Emprendedores/patrones', pct: 19.8 },
+  { medio: 'Anuncios radio/TV/internet', pct: 9.9 },
+  { medio: 'Oficina de empleo (MTFE)', pct: 3.6 },
+];
+// Fuente: Anuario 2026, Tabla 128
+
+export const egresadosExtranjeroPorRama = [
+  { ramaKey: 'sociales', total: 124 },
+  { ramaKey: 'ingenieria', total: 32 },
+  { ramaKey: 'informatica', total: 14 },
+  { ramaKey: 'otras', total: 48 },
+];
+// Fuente: Anuario 2026, Tabla 100 (2023) · Total homologados: 218
+
+// ---------- ECONOMÍA ----------
+export const pibRealHistoricoProyectado = [
+  { anio: '2021', pib: 0.9 },
+  { anio: '2022', pib: 3.2 },
+  { anio: '2023', pib: -7.4 },
+  { anio: '2024', pib: 0.4 },
+  { anio: '2025p', pib: -1.6 },
+  { anio: '2026p', pib: 0.2 },
+  { anio: '2027p', pib: 1.2 },
+];
+// Fuente: Perspectivas Macroeconómicas 2025-2027, Tabla 1C
+
+export const inflacionMensual2025 = [
+  { mes: 'Ene', ipc: 3.4 },
+  { mes: 'Feb', ipc: 3.4 },
+  { mes: 'Mar', ipc: 3.5 },
+  { mes: 'Abr', ipc: 3.4 },
+  { mes: 'Dic', ipc: 2.3 },
+];
+// Fuente: Anuario 2026, Tabla 158 (valores clave de la serie)
+
+// ---------- ENERGÍA ----------
+export const generacionEnergia2025 = [
+  { fuenteKey: 'norenovable', kw: 679174 },
+  { fuenteKey: 'renovable', kw: 555160 },
+];
+// Fuente: Anuario 2026, Tabla 16 · Total 1.234.334 KW
+
+// ---------- SALUD / HSE ----------
+export const saludStats: StatCardRaw[] = [
+  { value: '44.578', labelKey: 'salud.stat.paludismo', sourceLabel: 'Tabla 59' },
+  { value: '72.257', labelKey: 'salud.stat.vih', sourceLabel: 'Tabla 54' },
+  { value: '478', labelKey: 'salud.stat.trafico', sourceLabel: 'Tabla 225' },
 ];
 
-export const hydrocarbonProjections = [
-  { name: 'Crudo', growth: 5.5, color: '#3b82f6' },
-  { name: 'Otros Gases', growth: -29.0, color: '#94a3b8' },
-  { name: 'Condensado', growth: -33.5, color: '#ef4444' },
+export const vihPorGenero2024 = [
+  { grupoKey: 'mujeres', casos: 2260 },
+  { grupoKey: 'hombres', casos: 1501 },
+  { grupoKey: 'ninos', casos: 621 },
 ];
+// Fuente: Anuario 2026, Tabla 55
 
-export const educationUnemploymentData = [
-  { level: 'Secundaria Básica', desempleo: 32.9 },
-  { level: 'Bachillerato', desempleo: 19.7 },
-  { level: 'Formación Técnica', desempleo: 18.2 },
-  { level: 'Universitarios', desempleo: 4.4 },
+// ---------- EDUCACIÓN ----------
+export const alfabetizacionPorRegion = [
+  { regionKey: 'nacional', ambos: 90.1, hombres: 95.2, mujeres: 85.6 },
+  { regionKey: 'insular', ambos: 96.6, hombres: 97.1, mujeres: 96.1 },
+  { regionKey: 'continental', ambos: 87.6, hombres: 94.4, mujeres: 81.6 },
 ];
+// Fuente: Anuario 2026, Tabla 60
 
-export const jobSearchData = [
-  { method: 'Contactos/Parientes', value: 45.0, color: '#8b5cf6' },
-  { method: 'Patrones Directos', value: 19.8, color: '#6366f1' },
-  { method: 'Anuncios (TV/Redes)', value: 9.9, color: '#ec4899' },
-  { method: 'Oficina MTFE', value: 3.6, color: '#14b8a6' },
+// ---------- DEMOGRAFÍA ----------
+export const densidadPoblacional = [
+  { ambitoKey: 'nacional', densidad: 44, hogar: 4.0 },
+  { ambitoKey: 'insular', densidad: 167, hogar: 3.7 },
+  { ambitoKey: 'biokonorte', densidad: 387, hogar: null },
+  { ambitoKey: 'continental', densidad: 34, hogar: 4.1 },
 ];
+// Fuente: Anuario 2026, Tablas 23-24 (densidad: Censo 2015)
 
-export const hseHealthData = [
-  { disease: 'Paludismo Simple', cases: 44578, severity: 'Alta Prevalencia' },
-  { disease: 'Salmonelosis', cases: 43623, severity: 'Alta Prevalencia' },
-  { disease: 'Paludismo Complicado', cases: 10739, severity: 'Riesgo Crítico' },
-  { disease: 'Nuevos Casos VIH (2024)', cases: 4382, severity: 'Riesgo Sistémico' },
+// ---------- CEMAC ----------
+export const comparativaCemac = [
+  { indicadorKey: 'pib', guineaEcuatorial: 0.9, cemac: 2.6 },
+  { indicadorKey: 'inflacion', guineaEcuatorial: 3.4, cemac: 4.1 },
 ];
-
-export const hseTrafficData = [
-  { region: 'Bioko Norte', accidentes: 478, fallecidos: 17, heridos: 130 },
-  { region: 'Litoral', accidentes: 260, fallecidos: 6, heridos: 29 },
-  { region: 'Bioko Sur', accidentes: 5, fallecidos: 0, heridos: 0 },
-];
+// Fuente: BEAC (CPM marzo 2025) · Anuario 2026

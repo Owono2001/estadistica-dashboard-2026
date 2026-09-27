@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
-import Header from '../Header';
+import Header from '../dashboard/Header';
 import { LanguageProvider } from '@/context/LanguageContext';
 
 // Mock de matchMedia para componentes responsivos
@@ -31,6 +31,6 @@ describe('Header Component', () => {
     expect(navElement).toBeTruthy();
 
     // Verificamos elementos clave del menú del Dashboard corporativo
-    expect(navElement?.textContent).toMatch(/Telemetry/i);
+    expect(navElement?.textContent).toMatch(/Empleo/i);
   });
 });

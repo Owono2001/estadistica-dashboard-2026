@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { LanguageProvider } from "@/context/LanguageContext";
+import ServiceWorkerRegistry from "@/components/ServiceWorkerRegistry";
+import UpdateNotification from "@/components/UpdateNotification";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -23,6 +25,8 @@ export default function RootLayout({
       >
         <LanguageProvider>
           {children}
+          <UpdateNotification />
+          <ServiceWorkerRegistry />
         </LanguageProvider>
       </body>
     </html>

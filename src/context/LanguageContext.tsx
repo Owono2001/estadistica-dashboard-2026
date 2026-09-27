@@ -1,7 +1,8 @@
 "use client";
 
 import React, { createContext, useState, useContext, useEffect } from 'react';
-import { translations, TranslationKey } from '../data/translations';
+import { translations } from '../data/translations';
+import type { TranslationKey } from '../data/translations';
 
 type Language = 'en' | 'es';
 
@@ -14,14 +15,17 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  // 1. Inicializa con 'en' por defecto para que el servidor no falle
-  const [language, setLanguage] = useState<Language>('en');
+  // 1. Inicializa con 'es' por defecto (idioma original del panel) para que el
+  //    render del servidor y el primer render del cliente coincidan (evita hydration mismatch).
+  const [language, setLanguage] = useState<Language>('es');
 
-  // 2. Lee el localStorage solo en el cliente (después del primer renderizado)
+  // 2. Lee localStorage solo después del montaje: es la única forma segura de
+  //    sincronizar con un valor que solo existe en el navegador sin desajustar la hidratación.
   useEffect(() => {
-    const saved = localStorage.getItem('portfolio_lang');
+    const saved = window.localStorage.getItem('portfolio_lang');
     if (saved === 'es' || saved === 'en') {
-      setLanguage(saved as Language);
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- sync desde localStorage tras montar, patrón intencional
+      setLanguage(saved);
     }
   }, []);
 
