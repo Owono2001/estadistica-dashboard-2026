@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0f172a" />
+    
+    <!-- Título principal: Tu nombre DEBE ir primero para que Google lo indexe como prioridad -->
+    <title>Pedro Fabian Owono | Computer Engineer (M.Eng)</title>
+
+    <!-- PEGA AQUÍ LA ETIQUETA QUE TE DIO GOOGLE -->
+    <meta name="google-site-verification" content="KkPNIaYlg9a0ioijR92PSnMNsXUVG1QiD2mHHF-zwLc" />
+    
+    <!-- Meta Title redundante para compatibilidad -->
+    <meta name="title" content="Pedro Fabian Owono | Computer Engineer (M.Eng)" />
+    
+    <!-- Descripción clara y honesta de tu perfil profesional -->
+    <meta name="description" content="Official portfolio of Pedro Fabian Owono Ondo Mangue. Bilingual Computer Engineer (M.Eng) specializing in IT/OT Integration, industrial automation, and cybersecurity." />
+    
+    <!-- Etiquetas clave con todas las variaciones de tu nombre y profesión -->
+    <meta name="keywords" content="Pedro Fabian, Pedro Fabian Owono, Pedro Fabian Owono Ondo, Pedro Fabian Owono Ondo Mangue, Ondo Mangue, Owono Ondo, Computer Engineer, Ingeniero Informático, Ingeniero de Computadores, IT/OT Integration, BEM Graduate Engineer, Equatorial Guinea" />
+    <meta name="author" content="Pedro Fabian Owono Ondo Mangue" />
+
+    <!-- Directiva estricta para los bots de Google -->
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph (LinkedIn, WhatsApp, etc) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://pedro-portfolio-opal.vercel.app/" />
+    <meta property="og:title" content="Pedro Fabian Owono | Computer Engineer" />
+    <meta property="og:description" content="Explore the professional portfolio, projects, and trajectory of Pedro Fabian, Computer Engineer bridging the gap between IT and OT." />
+    <meta property="og:image" content="https://pedro-portfolio-opal.vercel.app/images/preview-final-ok.webp" />
+
+    <!-- Twitter Cards -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://pedro-portfolio-opal.vercel.app/" />
+    <meta property="twitter:title" content="Pedro Fabian Owono | Computer Engineer" />
+    <meta property="twitter:description" content="Explore the professional portfolio, projects, and trajectory of Pedro Fabian, Computer Engineer bridging the gap between IT and OT." />
+    <meta property="twitter:image" content="https://pedro-portfolio-opal.vercel.app/images/preview-final-ok.webp" />
+
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+
+    <!-- SCRIPT DE OFFLINE (Service Worker) -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js').then(registration => {
+            console.log('SW registered: ', registration);
+          }).catch(registrationError => {
+            console.log('SW registration failed: ', registrationError);
+          });
+        });
+      }
+    </script>
+  </body>
+</html>

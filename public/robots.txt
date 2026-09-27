@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://pedro-portfolio-opal.vercel.app/sitemap.xmlss
