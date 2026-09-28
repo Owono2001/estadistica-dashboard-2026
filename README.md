@@ -678,6 +678,7 @@ This is mainly a personal project, but corrections and structural contributions 
 ## Author
 
 **Pedro Fabian Owono Ondo Mangue**
+
 Computer Engineer, IT/OT integration and B2B consulting.
 
 This project is both a public analytical resource on Equatorial Guinea's socio-economic indicators and a technical showcase of modern React and Next.js practices.
